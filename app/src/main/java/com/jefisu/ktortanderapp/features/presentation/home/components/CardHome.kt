@@ -18,14 +18,15 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
-import com.jefisu.ktortanderapp.features.data.model.MemberResponse
+import com.jefisu.ktortanderapp.R
+import com.jefisu.ktortanderapp.features.domain.model.Member
 import com.jefisu.ktortanderapp.features.presentation.util.Screen
 
 @ExperimentalCoilApi
 @ExperimentalMaterialApi
 @Composable
 fun CardHome(
-    memberResponse: MemberResponse,
+    memberResponse: Member,
     navController: NavController
 ) {
     Card(
@@ -45,7 +46,12 @@ fun CardHome(
                     .fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                val painter = rememberImagePainter(data = memberResponse.imageUrl)
+                val painter = rememberImagePainter(
+                    data = memberResponse.imageUrl,
+                    builder = {
+                        placeholder(R.drawable.ic_loading_image)
+                    }
+                )
                 Image(
                     painter = painter,
                     contentDescription = memberResponse.imageUrl,

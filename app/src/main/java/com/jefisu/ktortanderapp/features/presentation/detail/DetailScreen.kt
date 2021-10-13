@@ -1,6 +1,8 @@
 package com.jefisu.ktortanderapp.features.presentation.detail
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -29,25 +31,5 @@ fun DetailScreen(
             description = member.description,
             name = member.name
         )
-//        Image(
-//            painter = painter,
-//            contentDescription = member.name,
-//            modifier = Modifier
-//                .size(250.dp)
-//                .clip(RoundedCornerShape(15.dp))
-//        )
-//        Spacer(modifier = Modifier.height(2.dp))
-//        Text(
-//            text = member.name,
-//            fontSize = 35.sp,
-//            fontWeight = FontWeight.Bold
-//        )
-//        Spacer(modifier = Modifier.height(2.dp))
-//        Row(modifier = Modifier
-//                .fillMaxWidth()
-//                .padding(horizontal = 20.dp)
-//        ) {
-//            Text(text = member.description, maxLines = 6)
-//        }
     }
 }

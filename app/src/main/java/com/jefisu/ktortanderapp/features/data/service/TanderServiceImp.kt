@@ -1,6 +1,6 @@
 package com.jefisu.ktortanderapp.features.data.service
 
-import com.jefisu.ktortanderapp.features.data.TanderConstants
+import com.jefisu.ktortanderapp.features.data.Constants
 import com.jefisu.ktortanderapp.features.data.model.MemberResponse
 import io.ktor.client.*
 import io.ktor.client.features.*
@@ -13,7 +13,7 @@ class TanderServiceImp(
     override suspend fun getMember(): List<MemberResponse> {
         return try {
             client.get {
-                url(TanderConstants.MEMBERS)
+                url(Constants.MEMBERS)
             }
         } catch (e: RedirectResponseException) {
             // 3xx
@@ -32,26 +32,22 @@ class TanderServiceImp(
         }
     }
 
-    override suspend fun getMemberById(id: Int?): MemberResponse {
+    override suspend fun getMemberById(id: Int?): MemberResponse? {
         return try {
             client.get {
-                url("${TanderConstants.MEMBERS}/$id")
+                url("${Constants.MEMBER}/$id")
             }
         } catch (e: RedirectResponseException) {
-            // 3xx
             println("Error: ${e.response.status.description}")
-            MemberResponse(0, "", "", "", "")
+            null
         }
         catch (e: ClientRequestException) {
-            // 4xx
             println("Error: ${e.response.status.description}")
-            MemberResponse(0, "", "", "", "")
-
+            null
         }
         catch (e: ServerResponseException) {
-            // 5xx
             println("Error: ${e.response.status.description}")
-            MemberResponse(0, "", "", "", "")
+            null
         }
     }
 }
