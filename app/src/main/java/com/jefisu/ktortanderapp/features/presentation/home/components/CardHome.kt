@@ -26,14 +26,14 @@ import com.jefisu.ktortanderapp.features.presentation.util.Screen
 @ExperimentalMaterialApi
 @Composable
 fun CardHome(
-    memberResponse: Member,
+    member: Member,
     navController: NavController
 ) {
     Card(
         elevation = 0.dp,
         shape = RoundedCornerShape(10.dp),
         onClick = {
-            navController.navigate(route = Screen.Detail.route + "/${memberResponse.id}")
+            member.id?.let { navController.navigate(Screen.Detail.withArgs(it)) }
         },
         modifier = Modifier
             .padding(start = 15.dp, top = 10.dp)
@@ -47,14 +47,14 @@ fun CardHome(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 val painter = rememberImagePainter(
-                    data = memberResponse.imageUrl,
+                    data = member.imageUrl,
                     builder = {
                         placeholder(R.drawable.ic_loading_image)
                     }
                 )
                 Image(
                     painter = painter,
-                    contentDescription = memberResponse.imageUrl,
+                    contentDescription = member.imageUrl,
                     modifier = Modifier
                         .padding(top = 6.dp)
                         .clip(CircleShape)
@@ -64,9 +64,9 @@ fun CardHome(
                     modifier = Modifier
                         .padding(start = 10.dp, end = 14.dp)
                 ) {
-                    Text(text = memberResponse.name, fontSize = 20.sp)
+                    Text(text = member.name, fontSize = 20.sp)
                     Spacer(modifier = Modifier.height(1.dp))
-                    Text(text = memberResponse.description, maxLines = 1)
+                    Text(text = member.description, maxLines = 1)
                 }
             }
             Spacer(modifier = Modifier.height(8.dp))
