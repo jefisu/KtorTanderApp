@@ -10,6 +10,8 @@ import androidx.navigation.navArgument
 import coil.annotation.ExperimentalCoilApi
 import com.jefisu.ktortanderapp.features.presentation.detail.DetailScreen
 import com.jefisu.ktortanderapp.features.presentation.home.HomeScreen
+import com.jefisu.ktortanderapp.features.presentation.profile.ProfileScreen
+import com.jefisu.ktortanderapp.features.presentation.settings.SettingsScreen
 
 @ExperimentalCoilApi
 @ExperimentalMaterialApi
@@ -31,8 +33,14 @@ fun Navigation(
         ) { entry ->
             val id = entry.arguments?.getInt("id")
             id?.let {
-                DetailScreen(id = it)
+                DetailScreen(id = it, navController = navController)
             }
+        }
+        composable(route = Screen.Profile.route) {
+            ProfileScreen()
+        }
+        composable(route = Screen.Settings.route) {
+            SettingsScreen()
         }
     }
 }
