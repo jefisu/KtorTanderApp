@@ -23,18 +23,19 @@ fun DetailScreen(
     viewModel: DetailViewModel = hiltViewModel(),
     navController: NavController
 ) {
-    viewModel.getMember(id)
-    val member = viewModel.state.value
-
+    viewModel.onEvent(DetailEvent.GetMemberById(id))
+    val response = viewModel.state.value
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween
     ) {
-        val painter = rememberImagePainter(data = member.imageUrl)
-        Row(modifier = Modifier
-            .fillMaxWidth()
-            .padding(8.dp)) {
+        val painter = rememberImagePainter(data = response.member?.imageUrl)
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)
+        ) {
             Icon(
                 imageVector = Icons.Default.ArrowBack,
                 contentDescription = "",
@@ -45,10 +46,12 @@ fun DetailScreen(
                     }
             )
         }
-        CardDetail(
-            painter = painter,
-            description = member.description,
-            name = member.name
-        )
+        response.member?.let {
+            CardDetail(
+                painter = painter,
+                description = it.description,
+                name = it.name
+            )
+        }
     }
 }

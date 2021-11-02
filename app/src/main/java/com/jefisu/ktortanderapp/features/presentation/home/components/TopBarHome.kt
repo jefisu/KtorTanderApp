@@ -28,15 +28,14 @@ fun TopBarHome(
         Spacer(modifier = Modifier.height(10.dp))
         Row(
             modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
                 text = "Today",
-                fontSize = 19.sp,
-                modifier = Modifier.weight(0.9f)
+                fontSize = 19.sp
             )
             IconButton(
-                modifier = Modifier.weight(0.1f),
                 onClick = { onUpdateList() }
             ) {
                 Icon(
