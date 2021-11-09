@@ -1,11 +1,14 @@
 package com.jefisu.ktortanderapp.features.presentation.util
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -16,7 +19,15 @@ import com.jefisu.ktortanderapp.features.data.Constants
 fun BottomNavBar(
     navController: NavController
 ) {
-    BottomNavigation {
+    BottomNavigation(
+        modifier = Modifier.graphicsLayer {
+            shape = RoundedCornerShape(
+                topStart = 20.dp,
+                topEnd = 20.dp
+            )
+            clip = true
+        }
+    ) {
         val navBackStackEntry = navController.currentBackStackEntryAsState()
         Constants.NavItems.forEach { navItem ->
             val selected = navItem.route == navBackStackEntry.value?.destination?.route
