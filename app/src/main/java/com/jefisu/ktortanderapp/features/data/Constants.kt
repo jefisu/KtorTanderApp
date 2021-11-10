@@ -13,9 +13,5 @@ object Constants {
     const val MEMBERS = "$BASE_URL/members"
     const val MEMBER = "$BASE_URL/member"
 
-    val NavItems = listOf(
-        BottomNavItem(title = "Home", route = Screen.Home.route, icon = Icons.Default.Home),
-        BottomNavItem(title = "Profile", route = Screen.Profile.route, icon = Icons.Default.Person),
-        BottomNavItem(title = "Settings", route = Screen.Settings.route, icon = Icons.Default.Settings)
-    )
+
 }

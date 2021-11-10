@@ -27,7 +27,8 @@ class HomeViewModel @Inject constructor(
                 viewModelScope.launch {
                     _state.value = state.value.copy(
                         members = useCases.getMembers(),
-                        isLoading = false
+                        isLoading = false,
+                        count = useCases.getMembers().size
                     )
                 }
             }
