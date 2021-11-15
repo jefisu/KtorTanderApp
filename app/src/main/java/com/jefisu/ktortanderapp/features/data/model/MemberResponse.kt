@@ -9,7 +9,8 @@ data class MemberResponse(
     val name: String,
     val nickname: String,
     val imageUrl: String,
-    val description: String
+    val description: String,
+    val messages: List<String>
 ) {
     fun toMember(): Member {
         return Member(
@@ -17,7 +18,8 @@ data class MemberResponse(
             name = name,
             nickname = nickname,
             imageUrl = imageUrl,
-            description = description
+            description = description,
+            messages = messages
         )
     }
 }

@@ -8,5 +8,6 @@ data class Member(
     val name: String,
     val nickname: String,
     val imageUrl: String,
-    val description: String
+    val description: String,
+    val messages: List<String>
 )
