@@ -10,6 +10,7 @@ import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -45,13 +46,15 @@ fun BottomNavBar(
         )
     )
     BottomNavigation(
-        modifier = Modifier.graphicsLayer {
-            shape = RoundedCornerShape(
-                topStart = 20.dp,
-                topEnd = 20.dp
-            )
-            clip = true
-        }
+        backgroundColor = Color.LightGray,
+        modifier = Modifier
+            .graphicsLayer {
+                shape = RoundedCornerShape(
+                    topStart = 20.dp,
+                    topEnd = 20.dp
+                )
+                clip = true
+            }
     ) {
         val navBackStackEntry = navController.currentBackStackEntryAsState()
         navItems.forEach { navItem ->

@@ -1,14 +1,15 @@
-package com.jefisu.ktortanderapp.features.data.service
+package com.jefisu.ktortanderapp.features.data.repository
 
 import com.jefisu.ktortanderapp.features.data.Constants
 import com.jefisu.ktortanderapp.features.data.model.MemberResponse
+import com.jefisu.ktortanderapp.features.domain.repository.TanderRepository
 import io.ktor.client.*
 import io.ktor.client.features.*
 import io.ktor.client.request.*
 
-class TanderServiceImp(
+class TanderRepositoryImp(
     private val client: HttpClient
-) : TanderService {
+) : TanderRepository {
 
     override suspend fun getMember(): List<MemberResponse> {
         return try {

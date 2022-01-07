@@ -12,14 +12,21 @@ import com.jefisu.ktortanderapp.features.presentation.detail.DetailScreen
 import com.jefisu.ktortanderapp.features.presentation.home.HomeScreen
 import com.jefisu.ktortanderapp.features.presentation.profile.ProfileScreen
 import com.jefisu.ktortanderapp.features.presentation.settings.SettingsScreen
+import com.jefisu.ktortanderapp.features.presentation.splash.SplashScreen
 
 @ExperimentalCoilApi
 @ExperimentalMaterialApi
 @Composable
-fun Navigation(
+fun NavGraph(
     navController: NavHostController
 ) {
-    NavHost(navController = navController, startDestination = Screen.Home.route) {
+    NavHost(
+        navController = navController,
+        startDestination = Screen.Splash.route
+    ) {
+        composable(route = Screen.Splash.route) {
+            SplashScreen(navController = navController)
+        }
         composable(route = Screen.Home.route) {
             HomeScreen(navController = navController)
         }

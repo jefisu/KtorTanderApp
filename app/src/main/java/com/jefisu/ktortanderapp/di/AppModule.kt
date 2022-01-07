@@ -1,7 +1,7 @@
 package com.jefisu.ktortanderapp.di
 
-import com.jefisu.ktortanderapp.features.data.service.TanderService
-import com.jefisu.ktortanderapp.features.data.service.TanderServiceImp
+import com.jefisu.ktortanderapp.features.data.repository.TanderRepositoryImp
+import com.jefisu.ktortanderapp.features.domain.repository.TanderRepository
 import com.jefisu.ktortanderapp.features.domain.use_cases.GetMember
 import com.jefisu.ktortanderapp.features.domain.use_cases.GetMembers
 import com.jefisu.ktortanderapp.features.domain.use_cases.UseCases
@@ -22,8 +22,8 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideService(): TanderService {
-        return TanderServiceImp(
+    fun provideService(): TanderRepository {
+        return TanderRepositoryImp(
             client = HttpClient(Android) {
                 install(Logging) {
                     level = LogLevel.ALL
@@ -37,10 +37,10 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideUseCases(service: TanderService): UseCases {
+    fun provideUseCases(repository: TanderRepository): UseCases {
         return UseCases(
-            getMembers = GetMembers(service),
-            getMemberById = GetMember(service)
+            getMembers = GetMembers(repository),
+            getMemberById = GetMember(repository)
         )
     }
 }

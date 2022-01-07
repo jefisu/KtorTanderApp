@@ -38,7 +38,7 @@ fun DetailScreen(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Color(0xFF1F1E1E))
+                .background(Color.LightGray)
                 .padding(
                     start = 8.dp,
                     end = 8.dp,
